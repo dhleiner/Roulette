@@ -1,4 +1,5 @@
 import Chip from './Chip.js';
+import "./Board.css"
 const rows=[0,1,2]
 const cols=[0,1,2,3,4,5,6,7,8,9,10,11]
 const reds=[1,3,5,7,9,12,14,16,18,21,23,25,27,28,30,32,34,36]
@@ -29,7 +30,7 @@ function Board({numbers, handleNewBet, activeBets}){
           <div className="col border-right border-left no-padding p-0">{
             rows.map(row => {
               const number=(col*3)+(3-row)
-              let classes="custom-border-top custom-border-bottom text-white pointer custom-button"
+              let classes="custom-border-top custom-border-bottom text-white pointer custom-button w-100"
               const isRed=reds.includes(number)
               if (isRed){
                 classes=classes+" bg-danger"
@@ -61,10 +62,19 @@ function Board({numbers, handleNewBet, activeBets}){
               }
               
               return(
-                <div className={classes} style={{position:"relative"}} onClick={()=>handleNewBet(number)}>
+                <div className="singleNumber">
+                  <div className='topRow'></div>
+                  <div className="middleRow">
+                    <div className="leftBorder"></div>
+                  <div className={classes} style={{position:"relative"}} onClick={()=>handleNewBet(number)}>
                 {number}
                 {chipToDisplay && <span style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}><Chip number={chipToDisplay} setSelectedChip={()=>null}/></span>}
                 </div>  
+                <div className="rightBorder"></div>
+                  </div>
+                  <div className="bottomRow"></div>
+                
+                </div>
               )
             })
           }
