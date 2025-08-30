@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Wheel.css';
 
-const Wheel = () => {
+const Wheel = ({result, setResult}) => {
     const [spinAngle, setSpinAngle] = useState(0)
-    const [result, setResult] = useState(0)
+    //const [result, setResult] = useState(0)
     
 
     const numbersArray = [
